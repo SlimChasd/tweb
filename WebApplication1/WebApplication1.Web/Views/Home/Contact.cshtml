@@ -1,0 +1,125 @@
+﻿@model WebApplication1.ViewModels.ContactViewModel
+
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- background bg start -->
+<div class="background_bg">
+    <!-- contact section start -->
+    <div class="contact_section layout_padding">
+        <div class="container">
+            <h1 class="watchs_taital">04<br>Get In Touch</h1>
+        </div>
+        <div class="contact_section_2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mail_section_1">
+                            @using (Html.BeginForm("SubmitContactForm", "Home", FormMethod.Post, new { @class = "contact-form" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <div class="form-group">
+                                    <input type="text" class="mail_text" placeholder="Your Name" name="Name" value="@Model.Name">
+                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="mail_text" placeholder="Phone Number" name="PhoneNumber" value="@Model.PhoneNumber">
+                                    @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="mail_text" placeholder="Email" name="Email" value="@Model.Email">
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <textarea class="massage-bt" placeholder="Message" rows="5" name="Message">@Model.Message</textarea>
+                                    @Html.ValidationMessageFor(m => m.Message, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="send_bt">
+                                    <button type="submit" class="btn btn-primary">SEND</button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-6 padding_right_0">
+                        <div class="map_section">
+                            <img src="~/Content/images/map-img.png" alt="Map Image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact section end -->
+</div>
+<!-- background bg end -->
+
+<style>
+    .contact_section {
+        background-color: #000; /* Черный фон */
+        color: #fff; /* Белый текст */
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .mail_section_1 {
+        background: rgba(255, 255, 255, 0.1); /* Прозрачный белый фон */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        margin-top: 20px;
+    }
+
+    .mail_text {
+        background-color: #fff; /* Белый фон для полей ввода */
+        color: #000; /* Черный текст для полей ввода */
+        border: none;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .mail_text:focus {
+        border-color: #555; /* Цвет границы при фокусе */
+        box-shadow: none;
+    }
+
+    .massage-bt {
+        background-color: #fff; /* Белый фон для текстовой области */
+        color: #000; /* Черный текст для текстовой области */
+        border: none;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    .massage-bt:focus {
+        border-color: #555; /* Цвет границы при фокусе */
+        box-shadow: none;
+    }
+
+    .btn-primary {
+        background-color: #d9534f; /* Цвет кнопки */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #c9302c; /* Цвет кнопки при наведении */
+    }
+
+    .text-danger {
+        color: #d9534f; /* Цвет сообщений об ошибках */
+    }
+
+    .map_section img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+</style>
