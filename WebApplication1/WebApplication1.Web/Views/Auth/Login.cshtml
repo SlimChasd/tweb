@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_WithoutBannerLayout.cshtml";
+}
+
+<section class="login-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="login-box">
+                    <h2 class="text-center">Login</h2>
+                    @using (Html.BeginForm("Login", "Auth", FormMethod.Post, new { @class = "login-form" }))
+                    {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.Label("Username", new { @class = "control-label" })
+                        @Html.TextBox("username", null, new { @class = "form-control" })
+                        @Html.ValidationMessage("username", "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Password", new { @class = "control-label" })
+                        @Html.Password("password", null, new { @class = "form-control" })
+                        @Html.ValidationMessage("password", "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group text-center">
+                        <input type="submit" value="Login" class="btn btn-primary" />
+                    </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .login-section {
+        background-color: #000; /* Черный фон */
+        color: #fff; /* Белый текст */
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .login-box {
+        background: rgba(255, 255, 255, 0.1); /* Прозрачный белый фон */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-form {
+        max-width: 400px;
+        margin: auto;
+    }
+
+    .login-form .form-control {
+        padding-top: 10%;
+        background-color: #333; /* Темно-серый фон для полей ввода */
+        color: #fff; /* Белый текст для полей ввода */
+        border: none;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .login-form .form-control:focus {
+        border-color: #555; /* Цвет границы при фокусе */
+        box-shadow: none;
+    }
+
+    .login-form .btn-primary {
+        background-color: #d9534f; /* Цвет кнопки */
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    .login-form .btn-primary:hover {
+        background-color: #c9302c; /* Цвет кнопки при наведении */
+    }
+
+    .text-danger {
+        color: #d9534f; /* Цвет сообщений об ошибках */
+    }
+
+    .login-box h2 {
+        margin-bottom: 30px;
+        font-size: 2em;
+        font-weight: 700;
+        color: #fff;
+    }
+
+</style>
