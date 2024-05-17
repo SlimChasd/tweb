@@ -1,0 +1,108 @@
+﻿@model IEnumerable<Customer>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="users-panel">
+    <h2>Users</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.Username</td>
+                    <td>@item.Role</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Users", new { id = item.CustomerId })" class="btn btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", "Users", new { id = item.CustomerId })" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .users-panel {
+        padding: 20px;
+        background-color: #f5f5f5;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+    }
+
+    .users-panel h2 {
+        margin-bottom: 20px;
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    .table {
+        width: 100%;
+        margin-bottom: 20px;
+        background-color: #fff;
+        border-collapse: separate;
+        border-spacing: 0 10px; /* Добавляем вертикальные отступы между строками */
+    }
+
+    .table th, .table td {
+        padding: 15px; /* Увеличиваем отступы внутри ячеек */
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #f8f8f8;
+        border: none; /* Убираем границы у заголовков */
+    }
+
+    .table td {
+        background-color: #ffffff; /* Цвет фона для ячеек данных */
+        border: none; /* Убираем границы у данных */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Добавляем тень для ячеек данных */
+        border-radius: 5px; /* Закругленные углы у ячеек данных */
+    }
+
+    .btn {
+        margin-right: 5px;
+        padding: 6px 12px;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+</style>
